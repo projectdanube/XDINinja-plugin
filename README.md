@@ -1,6 +1,8 @@
 xdi-ninja
 =========
 
+<a href="http://xdi2.org/" target="_blank"><img src="http://projectdanube.github.com/xdi-ninja/images/xdininja.png" align="right"></a>
+
 A browser plugin that is like "Twitter for data"
 
 Example cloud addresses to follow:
@@ -11,7 +13,5 @@ Example cloud addresses to follow:
 
 Warning: This uses "Crossrider", which is a known advertising/spyware framework. Therefore, consider
 this experimental and use at your own risk.
-
-<a href="http://xdi2.org/" target="_blank"><img src="http://projectdanube.github.com/xdi-ninja/images/xdininja.png" align="right"></a>
 
 See http://xdi.ninja/ for more information.
