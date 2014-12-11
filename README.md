@@ -1,4 +1,4 @@
-<a href="http://projectdanube.org/" target="_blank"><img src="http://projectdanube.github.com/xdi-ninja/images/xdininja.png" align="right"></a>
+<a href="http://xdi2.org/" target="_blank"><img src="http://projectdanube.github.com/xdi-ninja/images/xdininja.png" align="right"></a>
 
 xdi-ninja
 =========
