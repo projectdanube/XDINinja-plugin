@@ -88,7 +88,7 @@
 				cardaddressa.text(card['address']);
 				cardaddressa.click(function() { 
 
-					var url = "https://cloudcards.projectdanube.org/";
+					var url = "https://cloud-cards.xdi2.org/";
 					if (card['ote']) url += "ote/";
 					url += encodeURIComponent(card['address']);
 
@@ -182,16 +182,16 @@
 					data +="&env=" + (card['ote'] ? "OTE" : "PROD");
 
 					appAPI.request.get({
-						url: 'https://cloud-manager.projectdanube.org/doLogout',
+						url: 'https://cloud-manager.xdi2.org/doLogout',
 						onSuccess: function( response) {
 
 						    appAPI.request.post({
-						        url: 'https://cloud-manager.projectdanube.org/doLogin',
+						        url: 'https://cloud-manager.xdi2.org/doLogin',
 						        // Data to post
 						        postData: data,
 						        onSuccess: function(response) {
 
-						            appAPI.tabs.create("https://cloud-manager.projectdanube.org/#/cards");
+						            appAPI.tabs.create("https://cloud-manager.xdi2.org/#/cards");
 						        },
 						        onFailure: function(httpCode) {
 

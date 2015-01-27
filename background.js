@@ -5,7 +5,7 @@
 *************************************************************************************/
 		
 function error(errorText, cards, card) {
-	
+
 	if (cards && card) {
 		
 		cards.error(card, errorText);
@@ -15,38 +15,72 @@ function error(errorText, cards, card) {
 	}
 }
 
-function notify(card, changedvalues) {
+function notifychangedvalues(card, changedvalues) {
 
 	try {
 
 		appAPI.message.toActiveTab({
 	
-			type: 'notify',
+			type: 'notifychangedvalues',
 			notification: {
 				'card': card,
 				'changedvalues': changedvalues
 			}
 		});
 
-	} catch(e) { error("notify: " + e); }
+	} catch(e) { error("notifychangedvalues: " + e); }
 }
 
-function refresh(cards, card) {
+function notifychangedmessages(card, changedmessages) {
 
 	try {
 
-		cards.refresh(
+		appAPI.message.toActiveTab({
+	
+			type: 'notifychangedmessages',
+			notification: {
+				'card': card,
+				'changedmessages': changedmessages
+			}
+		});
+
+	} catch(e) { error("notifychangedmessages: " + e); }
+}
+
+function refreshvalues(cards, card) {
+
+	try {
+
+		cards.refreshvalues(
 
 			card, 
 			function(card, changedvalues) { 
 	
-				if (Object.keys(changedvalues).length > 0 && !card['you']) notify(card, changedvalues);
+				if (Object.keys(changedvalues).length > 0 && !card['you']) notifychangedvalues(card, changedvalues);
 			}, function(errorText) { 
 				
 				error(errorText, cards, card);
 			});
 
-	} catch(e) { error("refresh: " + e, cards, cardlist, address); }
+	} catch(e) { error("refreshvalues: " + e, cards, card); }
+}
+
+function refreshmessages(messages, cards, card) {
+
+	try {
+
+		messages.refreshmessages(
+
+			card, 
+			function(messages, changedmessages) { 
+
+				if (Object.keys(changedmessages).length > 0) notifychangedmessages(card, changedmessages);
+			}, function(errorText) { 
+
+				error(errorText, cards, card);
+			});
+
+	} catch(e) { error("refreshmessages: " + e, cards, card); }
 }
 
 appAPI.ready(function() {
@@ -54,17 +88,18 @@ appAPI.ready(function() {
 	var xdipost = eval(appAPI.resources.get('xdipost.js'));
 	var xdi = eval(appAPI.resources.get('xdi.js'));
 	var cards = eval(appAPI.resources.get('cards.js'));
+	var messages = eval(appAPI.resources.get('messages.js'));
 
     appAPI.browserAction.setResourceIcon('app20.png');
     
-    appAPI.browserAction.setBadgeText('12', [0,0,0,125]);
+    appAPI.browserAction.setBadgeText('5', [0,0,0,128]);
     
     appAPI.browserAction.setTitle('');
 
     appAPI.webRequest.onBeforeNavigate.addListener(function(details, data) {
     	
     	if (details.pageUrl.indexOf('=') === 0 || details.pageUrl.indexOf('+') === 0)
-			return { redirectTo: "http://cloudcards.projectdanube.org/" + encodeURIComponent(details.pageUrl) };
+			return { redirectTo: "https://cloud-cards.xdi2.org/" + encodeURIComponent(details.pageUrl) };
     }, null);
 
     appAPI.browserAction.setPopup({
@@ -78,7 +113,8 @@ appAPI.ready(function() {
 		var youcardlist = cards.listYOU();
 		var flwcardlist = cards.listFLW();
 
-		for (var address in youcardlist) refresh(cards, youcardlist[address]);
-		for (var address in flwcardlist) refresh(cards, flwcardlist[address]);
-    }, 20000);
+		for (var address in youcardlist) refreshvalues(cards, youcardlist[address]);
+		for (var address in flwcardlist) refreshvalues(cards, flwcardlist[address]);
+		for (var address in youcardlist) refreshmessages(messages, cards, youcardlist[address]);
+    }, 30000);
 });

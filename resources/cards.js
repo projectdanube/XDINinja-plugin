@@ -53,7 +53,7 @@
 				cardlist[list[i].key.substring(5)] = list[i].value;
 			}
 
-			return cardlist;
+			return cardlist;r
 		},
 		
 		error: function(card, errorText) {
@@ -63,7 +63,7 @@
 	    	appAPI.db.set((card['you'] ? "CARD1" : "CARD0") + card['address'], card);
 		},
 
-		refresh: function(card, success, error) {
+		refreshvalues: function(card, success, error) {
 
 			try {
 
@@ -129,7 +129,7 @@
 	
 							success(card, changedvalues);
 	
-				    	} catch(e) { error("refresh:success: " + errorText); }
+				    	} catch(e) { error("refreshvalues:success: " + e); }
 				    },
 				    function(errorText) {
 	
@@ -137,7 +137,7 @@
 				    }
 				);
 
-			} catch(e) { error("refresh: " + e); }
+			} catch(e) { error("refreshvalues: " + e); }
 		},
 
 		set: function(card, attribute, newvalue, success, error) {
