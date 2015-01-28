@@ -1,9 +1,7 @@
-<a href="http://xdi2.ninja/" target="_blank"><img src="http://projectdanube.github.com/xdi-ninja/images/xdininja.png" align="right"></a>
-<img src="http://projectdanube.github.com/xdi2/images/logo64.png"><br>
+<a href="http://projectdanube.org/" target="_blank"><img src="http://projectdanube.github.com/xdi2/images/projectdanube_logo.png" align="right"></a>
+<img src="http://projectdanube.github.com/xdi-ninja/images/xdininja.png"><br>
 
 This is a browser plugin that is like "Twitter for data".
-
-It can map personal data from the [Facebook Graph API](https://developers.facebook.com/docs/reference/api/) to XDI. 
 
 Example cloud addresses to follow:
 
@@ -17,7 +15,14 @@ See http://xdi.ninja/ for more information.
 
 * [Walkthrough](https://github.com/projectdanube/xdi-ninja/wiki/Walkthrough)
 
-### Warning
+### WARNING
 
-Warning: This uses "Crossrider", which is a known advertising/spyware framework. Therefore, consider
-this experimental and use at your own risk.
+Warning: This uses "Crossrider", which is a known advertising/spyware framework. If you install
+this plugin, a third party company will collect your personal data. Therefore, consider
+this experimental and use at your own risk. Maybe you are interested in rewriting the plugin? 
+
+### Community
+
+Google Group: http://groups.google.com/group/xdi2
+
+IRC: irc://irc.freenode.net:6667/xdi
