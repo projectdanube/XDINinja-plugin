@@ -14,6 +14,7 @@ See http://xdi.ninja/ for more information.
 ### Information
 
 * [Walkthrough](https://github.com/projectdanube/xdi-ninja/wiki/Walkthrough)
+* [Screencast](https://github.com/projectdanube/xdi-ninja/wiki/Screencast)
 
 ### WARNING
 
